@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var app = express();
 
+// This says that if we do root or /, we mean to look in the public folder.
 app.use(express.static('public'));
 
 var PORT = process.env.PORT || 3000;

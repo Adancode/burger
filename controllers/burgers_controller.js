@@ -11,12 +11,13 @@ router.get('/', function(req,res) {
 
 router.get('/burgers', function(req,res) {
 	burger.selectAll(function(data){
+          console.log();
 		res.render('index', {burgers : data});
 	});
 });
 
 router.post('/burgers/create', function(req,res) {
-	burger.insertOne(['burger_name', 'devoured'], [req.body.name, req.body.devoured], function(data){
+	burger.insertOne(['burger_name', 'devoured'], [req.body.name, 0], function(data){
 		res.redirect('/burgers');
 	});
 });
@@ -26,7 +27,7 @@ router.put('/burgers/update/:id', function(req,res) {
 
 	console.log('condition', condition);
 
-	burger.updateOne({'devoured' : req.body.devoured}, condition, function(data){
+	burger.updateOne({'devoured' : 1}, condition, function(data){
 		res.redirect('/burgers');
 	});
 });
